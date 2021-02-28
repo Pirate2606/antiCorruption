@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="text-center">
+                <h1><strong>Create Blog</strong></h1>
+            </div>
+            <form method="POST" class="pt-5" enctype="multipart/form-data">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">Title</span>
+                    </div>
+                    <input type="text" name="title" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-lg" required>
+                </div>
+                <div class="input-group pt-3 pb-4">
+                    <label for="content"></label>
+                    <textarea style="resize: none; height: 500px; font-size: 18px;" name="content" id="content"
+                              class="form-control" placeholder="Start here..." required></textarea>
+                </div>
+                <h3 style="font-size: 24px;">Upload display image: <span style="font-size: 18px;">Recommended size: (1440 × 720 px)</span></h3>
+                <div class="ile-upload-box pt-2">
+                    <div class="form-field">
+                        <div class="form-group files">
+                            <input
+                                    type="file"
+                                    name="blog_pic"
+                                    id="blog_pic"
+                                    class="js-input form-control"
+                                    required
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group pt-3">
+                    <input type="submit" class="btn btn-lg submit-button" value="Submit">
+                </div>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section class="pt-4 pb-4">
+        <div class="container text-center">
+            <h2 class="pt-3 pb-3">Report Corruption</h2>
+            <p class="mr-5 ml-5 pr-lg-5 pl-lg-5 pb-3">
+                Globally, the World Economic Forum has estimated that the cost of corruption is about US$2.6 trillion a
+                year.
+                The impacts of corruption disproportionately affect the most vulnerable people in society. Widespread
+                corruption deters investment, weakens economic growth and undermines the rule of law.
+            </p>
+            <img style="width: 100%" src="{{ url_for('static', filename='images/stop.jpg') }}" alt="stop corruption">
+        </div>
+        <div class="container pt-2">
+            <h3 class="my-5" style="text-align: center;">Select Country To Report Corruption</h3>
+            <table class="table mt-3">
+                <tbody>
+                {% set i = namespace(value=0) %}
+                {% for _ in range(10) %}
+                    <tr>
+                        <td style="text-align: center;">
+                            <a style="text-decoration: none;" href="{{ urls[i.value] | safe }}" target="_blank">{{ all_countries[i.value] }}</a>
+                        </td>
+                        {% set i.value = i.value + 1 %}
+                        <td style="text-align: center;">
+                            <a style="text-decoration: none;" href="{{ urls[i.value] | safe }}" target="_blank">{{ all_countries[i.value] }}</a>
+                        </td>
+                        {% set i.value = i.value + 1 %}
+                        <td style="text-align: center;">
+                            <a style="text-decoration: none;" href="{{ urls[i.value] | safe }}" target="_blank">{{ all_countries[i.value] }}</a>
+                        </td>
+                        {% set i.value = i.value + 1 %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

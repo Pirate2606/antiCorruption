@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="container pt-5 pb-5">
+            <h1><strong>Anti-Corruption in {{ country }}</strong></h1>
+            <hr>
+            <p class="pt-3">
+                {{ law.laws | safe }}
+            </p>
+        </div>
+    </section>
+
+{% endblock %}

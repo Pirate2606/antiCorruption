@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container pt-5 pb-5">
+        <div class="pb-3 text-center">
+            <h1><strong>All Blogs</strong></h1>
+        </div>
+        {% set i = namespace(value=0) %}
+        {% set count = namespace(value=3) %}
+        {% for _ in range(number_of_rows) %}
+            <div class="row">
+                {% for j in range(3) %}
+                    {% set flag = namespace(value=0) %}
+                    {% if i.value < total_items %}
+                        {% if i.value < count.value %}
+                            <div class="col-lg-4 mb-4">
+                                <div class="card">
+                                    <img style="width: 348px; height: 230px;"
+                                         src="{{ blog[i.value].image }}"
+                                         alt="" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ blog[i.value].title[:25] }}...</h5>
+                                        <p class="card-text">
+                                            {{ blog[i.value].content[:200] }}...
+                                        </p>
+                                        <a href="{{ url_for('individual_blog', title=urls[i.value], v=(i.value + 1)) }}"
+                                           class="btn btn-outline-success btn-md">Read More <i
+                                                class="fas fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% set i.value = i.value + 1 %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% set count.value = i.value * 2 %}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

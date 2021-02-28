@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section class="pt-3 pb-3">
+        <div class="text-center">
+            <h2 class="pt-3 pb-3">Global Overview of Anti-Corruption Laws</h2>
+            <p class="mr-5 ml-5 pr-lg-5 pl-lg-5 pb-3">
+                Anti-bribery and corruption compliance — and the mitigation of associated risk — continue to be some of
+                the
+                main challenges that
+                companies are facing, both in their domestic markets and abroad. On a global level, we see more and more
+                countries promulgating
+                new and more sophisticated anti-bribery and corruption legislation as well as aggressive enforcement by
+                government regulators.
+                Enforcement agencies of different countries are also increasingly cooperating in their fight against
+                corruption. In addition,
+                more countries are introducing individual criminal liability for bribery related offences.
+            </p>
+            <img style="width: 50%; border-radius: 5px;" src="{{ url_for('static', filename='images/map.png') }}"
+                 alt="map">
+        </div>
+        <div class="container pt-2">
+            <h3 class="my-5 text-center">Select Country to read corruption laws</h3>
+            <table class="table mt-3">
+                <tbody>
+                {% set i = namespace(value=0) %}
+                {% for _ in range(5) %}
+                    <tr>
+                        <td style="text-align: center;">
+                            <a style="text-decoration: none;" href="{{ url_for('laws_with_country', country=laws[i.value].country) }}">{{ laws[i.value].country }}</a>
+                        </td>
+                        {% set i.value = i.value + 1 %}
+                        <td style="text-align: center;">
+                            <a style="text-decoration: none;" href="{{ url_for('laws_with_country', country=laws[i.value].country) }}">{{ laws[i.value].country }}</a>
+                        </td>
+                        {% set i.value = i.value + 1 %}
+                        <td style="text-align: center;">
+                            <a style="text-decoration: none;" href="{{ url_for('laws_with_country', country=laws[i.value].country) }}">{{ laws[i.value].country }}</a>
+                        </td>
+                        {% set i.value = i.value + 1 %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}
